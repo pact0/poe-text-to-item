@@ -10,10 +10,6 @@ export function parseBaseItem(baseSection:Section): any {
         return "Unknown";
     }
 
-    // if (this.prophecy !== undefined) {
-    //     return "Prophecy";
-    // }
-    //
     // if (this.beast !== undefined) {
     //     return "Imprinted Bestiary Orb";
     // }

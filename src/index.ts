@@ -10,7 +10,7 @@ const sections: Section[] = x.text.split(Patterns.SectionDelimiter).map((x)=>{
   return {section: x, lines: removeEmptyFromArray(x.split("\n"))}
 })
 
-  if(x.name === "Body Armor"){
+  if(x.name === "Ring Qual"){
     //console.log("Sockets",parseSockets(text))
     //console.log("Beast",parseBeast(text))
     //console.log("Defense",parseDefense(text))

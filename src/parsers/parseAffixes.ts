@@ -1,7 +1,6 @@
-import { AffixType, Rarity } from "@models/enums";
+import { AffixType } from "@models/enums";
 import { Affix } from "@models/index";
 import { Section } from "@models/Section";
-import { removeEmptyFromArray } from "@utils/Helper";
 import { Patterns } from "@utils/Patterns";
 
 export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
@@ -32,10 +31,12 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
 }
 
 const stringToAffix = (affixString: string): Affix => {
+  console.log("Affix String", affixString)
     const affix: Affix = {
         text: affixString,
         formatted: "",
         values: [],
+        influence: "",
         type: AffixType.Explicit,
     };
 
@@ -52,6 +53,48 @@ const stringToAffix = (affixString: string): Affix => {
     affix.type = Patterns.AffixFractured.test(affixString) ? AffixType.Fractured : affix.type;
     affix.type = Patterns.AffixVeiled.test(affixString) ? AffixType.Veiled : affix.type;
 
+              // case "Redeemer's":
+              //   mgrp = 7;
+              //   break;
+              // case "Subterranean":
+              // case "of the Underground":
+              //   mgrp = 12;
+              //   break;
+              // case "Chosen":
+              // case "of the Order":
+              //   mgrp = 10;
+              //   break;
+              // case "Essences":
+              // case "of the Essence":
+              //   mgrp = 13;
+              //   break;
+              // case "of Fenumus":
+              // case "of Farrul":
+              // case "of Craiceann":
+              // case "of Saqawal":
+              // case "Elreon's":
+              //   mgrp = 14;
+              //   break;
+              // case "Notable":
+              // case "of Significance":
+              //   mgrp = 1;
+              //   naffs[z]["notable"] = true;
+              //   break; // Cluster jewel
+              // case "Citaqualotl's":
+              // case "Guatelitzi's":
+              // case "Matatl's":
+              // case "Tacati's":
+              // case "Topotante's":
+              // case "Xopec's":
+              // case "of Citaqualotl":
+              // case "of Guatelitzi":
+              // case "of Matatl":
+              // case "of Puhuarte":
+              // case "of Tacati":
+              //   mgrp = 9;
+              //   break;
+
+    affix.influence = Patterns.AffixInfluenceHunter.test(affixString) ? "Hunter" : affix.influence;
     // Remove digits from text
     affix.formatted = affix.text.replace(Patterns.Digits, "#");
 
@@ -61,6 +104,8 @@ const stringToAffix = (affixString: string): Affix => {
         affix.values.push(parseFloat(matches[0]));
     }
 
+  // const treg = /"(.*)"/gm;
+  // if(treg.test(affix.text))
     return affix;
 };
 
