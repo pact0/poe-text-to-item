@@ -10,7 +10,7 @@ const sections: Section[] = x.text.split(Patterns.SectionDelimiter).map((x)=>{
   return {section: x, lines: removeEmptyFromArray(x.split("\n"))}
 })
 
-  if(x.name === "Ring Qual"){
+  if(x.name === "Body Armor"){
     //console.log("Sockets",parseSockets(text))
     //console.log("Beast",parseBeast(text))
     //console.log("Defense",parseDefense(text))
@@ -26,6 +26,6 @@ const sections: Section[] = x.text.split(Patterns.SectionDelimiter).map((x)=>{
     // specific section stuff
     // base section will always be idx 0
     //console.log(parseBaseItem(sections[0]))
-    console.log(parseAffixes(sections));
+    (parseAffixes(sections));
   }
 })
