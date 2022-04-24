@@ -8,7 +8,6 @@ export * from "./Gem";
 export * from "./Map";
 export * from "./Metamorph";
 export * from "./Offense";
-export * from "./Prophecy";
 export * from "./Quality";
 export * from "./Requirements";
 export * from "./Sockets";

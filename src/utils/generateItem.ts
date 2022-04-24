@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Section } from "@models/Section"
 import { parseAffixes } from "@parsers/parseAffixes";
 import { parseBaseItem } from "@parsers/parseBaseItem";

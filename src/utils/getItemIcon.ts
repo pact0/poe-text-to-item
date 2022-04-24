@@ -1,3 +1,4 @@
+//@ts-nocheck
 import rareBases from "@bases/rareBases.json"
 import uniqueBases from "@bases/uniqueBases.json"
 
