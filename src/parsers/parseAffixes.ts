@@ -23,8 +23,6 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
     if (section === undefined) {
       continue;
     }
-    const exarch ="Searing Exarch Item"
-    const eater = "Eater of Worlds Item"
 
     // group affix mods and headers together
     for (const line of section.lines) {
@@ -33,7 +31,6 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
         if(line.charAt(0) === "(") continue;
         affixIndex++;
         affixPlaceholders[affixIndex] ={header: line, mod:line}
-        console.log("dsffdsf",affixPlaceholders[affixIndex])
         continue;
       }
 
@@ -56,7 +53,6 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
 
   }
 
-  console.log(affixPlaceholders)
   return affixPlaceholders.map((affix: AffixPlaceholder)=>{
     return parsePlaceholder(affix)
   })
