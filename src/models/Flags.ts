@@ -6,6 +6,8 @@ export interface Flags {
         redeemer: boolean;
         hunter: boolean;
         crusader: boolean;
+        eater: boolean;
+        exarch: boolean;
     };
     relic: boolean;
     replica: boolean;

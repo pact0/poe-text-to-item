@@ -1,5 +1,4 @@
 import { AffixType } from "@models/enums";
-import { Affix } from "@models/index";
 import { Section } from "@models/Section";
 import { Patterns } from "@utils/Patterns";
 
@@ -17,17 +16,27 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
   const affixPlaceholders: AffixPlaceholder[] = [];
   const sectionIndices = getAffixSectionIndices(affixSections);
 
+  let affixIndex = -1
   for (const index of sectionIndices) {
     const section = affixSections[index];
 
     if (section === undefined) {
       continue;
     }
-
-    let affixIndex = -1
+    const exarch ="Searing Exarch Item"
+    const eater = "Eater of Worlds Item"
 
     // group affix mods and headers together
     for (const line of section.lines) {
+      if(checkEnchantSection(line)){
+        // skip helper info
+        if(line.charAt(0) === "(") continue;
+        affixIndex++;
+        affixPlaceholders[affixIndex] ={header: line, mod:line}
+        console.log("dsffdsf",affixPlaceholders[affixIndex])
+        continue;
+      }
+
       if(checkAffixHeader(line)){
         affixIndex++;
         affixPlaceholders[affixIndex] ={header: line, mod:""}
@@ -46,18 +55,32 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
 
 
   }
+
   console.log(affixPlaceholders)
-
-
-
-  console.log(affixPlaceholders.map((affix: AffixPlaceholder)=>{
+  return affixPlaceholders.map((affix: AffixPlaceholder)=>{
     return parsePlaceholder(affix)
-  }))
-  return []
+  })
+}
+
+interface Affix {
+  header: string;
+  mod: string;
+  influence: string;
+  tier: number;
+  isElevated: boolean;
+  isNotable: boolean;
+  affixType: string;
+  modName: string;
+  type: string;
+  modFormatted: string;
+  modFormattedNoParentheses: string;
+  modValues: number[];
+  craftOfExile: {modgroup:number};
+  modRange: string;
 }
 
 const parsePlaceholder = (affixPlaceholder: AffixPlaceholder): any=>{
-  const affix = {header:"", mod:"", influence:"",tier:-1,isElevated:false,isNotable:false,affixType:"", modName:"",type:"", modFormatted:"", modValues:[], craftOfExile:{modgroup:-1}}
+  const affix:Affix= {header:"", mod:"", influence:"",tier:-1,isElevated:false,isNotable:false,affixType:"", modName:"",type:"", modFormatted:"", modValues:[], craftOfExile:{modgroup:-1},modRange:"", modFormattedNoParentheses:""}
   const affixHeaderString = affixPlaceholder.header
   const affixString = affixPlaceholder.secondMod ? affixPlaceholder.mod +", "+affixPlaceholder.secondMod : affixPlaceholder.mod
 
@@ -114,11 +137,12 @@ if(affix.header.includes("Master Crafted")){
   } else if(Patterns.AffixModNotable.test(affixHeaderString)){
     affix.craftOfExile.modgroup = 1
     affix.isNotable = true
+  } else if(Patterns.AffixInfluenceEater.test(affixHeaderString)){
+    affix.influence = "Eater"
+  } else if(Patterns.AffixInfluenceExarch.test(affixHeaderString)){
+    affix.influence = "Eater"
   }
   }
-
-      // case 'Notable' : case 'of Significance' : mgrp=1; naffs[z]["notable"]=true; break; // Cluster jewel
-
 
   // parse actual mods
     affix.mod = affixString
@@ -135,13 +159,22 @@ if(affix.header.includes("Master Crafted")){
     affix.type = Patterns.AffixVeiled.test(affixString) ? AffixType.Veiled : affix.type;
 
     // Remove digits from text
-    affix.modFormatted = affix.mod.replace(Patterns.Digits, "#");
+  affix.modFormatted = affix.mod.replace(Patterns.Digits, "#");
+  const modRangeMatch = affix.mod.match(Patterns.AffixModParenthesis);
+    affix.modFormattedNoParentheses = affix.mod.replace(Patterns.AffixModParenthesis, "");
 
     // Get values
     let matches;
     while ((matches = Patterns.Digits.exec(affix.mod)) !== null) {
         if(matches) affix.modValues.push(parseFloat(matches[0]));
     }
+
+  if(modRangeMatch){
+    affix.modRange = modRangeMatch[0];
+  }else{
+    affix.modRange = affix.modValues.join(",");
+  }
+
 
   return affix
 }
@@ -151,133 +184,9 @@ const checkAffixHeader = (affixString: string): boolean=>{
   return affixString.charAt(0)=== "{"
 }
 
-const stringToAffixHeader = (affixString: string) => {
-    const affix = {
-        headerText: affixString,
-        modName: "",
-        influence: "",
-        affixType: "",
-        tier: -1
-    };
-
-    affix.headerText = affixString
-        .replace(" — Unscalable Value", "")
-
-    affix.affixType = Patterns.AffixPrefix.test(affixString) ? "prefix" : affix.affixType;
-    affix.affixType = Patterns.AffixSuffix.test(affixString) ? "suffix" : affix.affixType;
-
-
-
-     const tier = Patterns.AffixTier.exec(affixString);
-  if(tier){
-    affix.tier=Number(tier[1])
-  }
-
-     const modName = Patterns.AffixModName.exec(affixString);
-  if(modName){
-    affix.modName = modName[1]
-  }
-
-
-    affix.influence = Patterns.AffixInfluenceRedeemer.test(affixString) ? "Redeemer" : affix.influence;
-    affix.influence = Patterns.AffixInfluenceHunter.test(affixString) ? "Hunter" : affix.influence;
-    affix.influence = Patterns.AffixInfluenceWarlord.test(affixString) ? "Warlord" : affix.influence;
-    affix.influence = Patterns.AffixInfluenceCrusader.test(affixString) ? "Crusader" : affix.influence;
-    affix.influence = Patterns.AffixInfluenceShaper.test(affixString) ? "Shaper" : affix.influence;
-    affix.influence = Patterns.AffixInfluenceElder.test(affixString) ? "Elder" : affix.influence;
-
-
-    // Remove digits from text
-    // affix.formatted = affix.text.replace(Patterns.Digits, "#");
-    //
-    // // Get values
-    // let matches;
-    // while ((matches = Patterns.Digits.exec(affix.text)) !== null) {
-    //     affix.values.push(parseFloat(matches[0]));
-    // }
-
-    return affix;
-};
-
-
-const stringToAffix = (affixString: string): Affix => {
-    const affix: Affix = {
-        text: affixString,
-        formatted: "",
-        values: [],
-        influence: "",
-        type: AffixType.Explicit,
-    };
-
-    // Determine flags and remove them from text
-    affix.text = affixString
-        .replace(Patterns.AffixEnchant, "")
-        .replace(Patterns.AffixImplicit, "")
-        .replace(Patterns.AffixCrafted, "")
-        .replace(Patterns.AffixFractured, "")
-        .replace(" — Unscalable Value", "")
-
-    affix.type = Patterns.AffixEnchant.test(affixString) ? AffixType.Enchant : affix.type;
-    affix.type = Patterns.AffixImplicit.test(affixString) ? AffixType.Implicit : affix.type;
-    affix.type = Patterns.AffixCrafted.test(affixString) ? AffixType.Crafted : affix.type;
-    affix.type = Patterns.AffixFractured.test(affixString) ? AffixType.Fractured : affix.type;
-    affix.type = Patterns.AffixVeiled.test(affixString) ? AffixType.Veiled : affix.type;
-
-              // case "Redeemer's":
-              //   mgrp = 7;
-              //   break;
-              // case "Subterranean":
-              // case "of the Underground":
-              //   mgrp = 12;
-              //   break;
-              // case "Chosen":
-              // case "of the Order":
-              //   mgrp = 10;
-              //   break;
-              // case "Essences":
-              // case "of the Essence":
-              //   mgrp = 13;
-              //   break;
-              // case "of Fenumus":
-              // case "of Farrul":
-              // case "of Craiceann":
-              // case "of Saqawal":
-              // case "Elreon's":
-              //   mgrp = 14;
-              //   break;
-              // case "Notable":
-              // case "of Significance":
-              //   mgrp = 1;
-              //   naffs[z]["notable"] = true;
-              //   break; // Cluster jewel
-              // case "Citaqualotl's":
-              // case "Guatelitzi's":
-              // case "Matatl's":
-              // case "Tacati's":
-              // case "Topotante's":
-              // case "Xopec's":
-              // case "of Citaqualotl":
-              // case "of Guatelitzi":
-              // case "of Matatl":
-              // case "of Puhuarte":
-              // case "of Tacati":
-              //   mgrp = 9;
-              //   break;
-
-    affix.influence = Patterns.AffixInfluenceHunter.test(affixString) ? "Hunter" : affix.influence;
-    // Remove digits from text
-    affix.formatted = affix.text.replace(Patterns.Digits, "#");
-
-    // Get values
-    let matches;
-    while ((matches = Patterns.Digits.exec(affix.text)) !== null) {
-        affix.values.push(parseFloat(matches[0]));
-    }
-
-  // const treg = /"(.*)"/gm;
-  // if(treg.test(affix.text))
-    return affix;
-};
+const checkEnchantSection = (affixString: string): boolean=>{
+  return Patterns.AffixEnchant.test(affixString)
+}
 
 const getAffixSectionIndices = (sections:Section[]): number[] => {
     const indices: number[] = [];

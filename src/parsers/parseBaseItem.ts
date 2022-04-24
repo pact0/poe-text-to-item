@@ -48,7 +48,7 @@ export function parseBaseItem(baseSection:Section): any {
       break;
 
     default:
-      console.log("Base Info",getBaseInfo(base as keyof typeof rareBases))
+      // console.log("Base Info",getBaseInfo(base as keyof typeof rareBases))
       break;
   }
 

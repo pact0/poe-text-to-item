@@ -10,6 +10,8 @@ export function parseFlags(rawText:string, name:string): Flags {
             redeemer: Patterns.InfluenceRedeemer.test(rawText),
             hunter: Patterns.InfluenceHunter.test(rawText),
             crusader: Patterns.InfluenceCrusader.test(rawText),
+            eater: Patterns.InfluenceEater.test(rawText),
+            exarch: Patterns.InfluenceExarch.test(rawText),
         },
         relic: Patterns.Relic.test(rawText),
         replica: Patterns.Replica.test(name),

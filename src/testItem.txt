@@ -1,0 +1,35 @@
+Item Class: Boots
+Rarity: Rare
+Blood League
+Titan Greaves
+--------
+Quality: +20% (augmented)
+Armour: 299 (augmented)
+--------
+Requirements:
+Level: 72
+Str: 120
+Dex: 100
+Int: 111
+--------
+Sockets: B-B-G G
+--------
+Item Level: 85
+--------
+{ Prefix Modifier "Gazelle's" (Tier: 3) — Speed }
+25% increased Movement Speed
+{ Prefix Modifier "Hunter's" (Tier: 1) }
+Projectiles Pierce 2 additional Targets
+{ Prefix Modifier "Stout" (Tier: 5) — Life }
++46(40-49) to maximum Life
+{ Suffix Modifier "of the Hunt" (Tier: 2) — Damage, Chaos, Ailment }
+Poisons you inflict deal Damage 9(7-9)% faster
+(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)
+(They will deal the same total damage over a shorter duration)
+{ Suffix Modifier "of Thick Skin" (Tier: 6) }
+12(11-13)% increased Stun and Block Recovery
+{ Master Crafted Suffix Modifier "of Craft" (Rank: 2) }
++8(7-8)% chance to Suppress Spell Damage (crafted)
+(50% of Damage from Suppressed Hits and Ailments they inflict is prevented) (crafted)
+--------
+Hunter Item

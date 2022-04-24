@@ -111,34 +111,6 @@ Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to r
 Note: ~b/o 1 mirror`,
   },
   {
-    name: "Mana flask",
-    text: `Item Class: Mana Flasks
-Rarity: Magic
-Enduring Eternal Mana Flask of the Hare
---------
-Quality: +28% (augmented)
-Recovers 2304 (augmented) Mana over 5,30 (augmented) Seconds
-Consumes 8 of 42 Charges on use
-Currently has 0 Charges
---------
-Requirements:
-Level: 65
---------
-Item Level: 67
---------
-{ Prefix Modifier "Enduring" (Tier: 1) — Mana }
-25(0)% reduced Duration
-Flask effect is not removed when Unreserved Mana is Filled
-Flask effect does not Queue
-(The duration of this flask's effect will still expire while other flask effects are active, even if they are from the same flask)
-{ Suffix Modifier "of the Hare" — Speed }
-30(6-8)% increased Movement Speed during Flask effect
---------
-Right click to drink. Can only hold charges while in belt. Refills as you kill monsters.
---------
-Note: ~b/o 1 mirror`,
-  },
-  {
     name: "map",
     text: `Item Class: Maps
 Rarity: Rare
@@ -554,4 +526,73 @@ Fractured Item
 --------
 Has Replica Atziri's Acuity Skin. You can reclaim this by shift-clicking this item.`,
   },
+  {
+    name: "Unique Jewel3",
+    text:`Item Class: Jewels
+Rarity: Unique
+Replica Conqueror's Efficiency
+Crimson Jewel
+--------
+Limited to: 1
+--------
+Item Level: 84
+--------
+{ Unique Modifier }
+4% increased Skill Effect Duration
+{ Unique Modifier }
++5 to Maximum Rage
+{ Unique Modifier — Mana }
+Non-Channelling Skills have -9 to Total Mana Cost
+--------
+"The effect is subtle, but potentially lethal..."
+--------
+Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.
+`
+  },
+  {
+    name:"New Influence",
+    text:`Item Class: Helmets
+Rarity: Rare
+Fate Brow
+Fluted Bascinet
+--------
+Quality: +20% (augmented)
+Armour: 230 (augmented)
+Evasion Rating: 230 (augmented)
+--------
+Requirements:
+Level: 72
+Str: 100
+Dex: 70
+Int: 100
+--------
+Sockets: R-R B-R
+--------
+Item Level: 83
+--------
+Spark fires 3 additional Projectiles (enchant)
+--------
+{ Searing Exarch Implicit Modifier (Greater) }
+24(22-24)% increased Temporal Chains Curse Effect (implicit)
+{ Eater of Worlds Implicit Modifier (Grand) — Physical, Elemental, Lightning }
+7% of Physical Damage from Hits taken as Lightning Damage (implicit)
+--------
+{ Prefix Modifier "Essences" — Life }
++106(100-106) to maximum Life
+{ Prefix Modifier "Summoner's" (Tier: 2) — Minion, Gem }
++2 to Level of Socketed Minion Gems
+{ Master Crafted Prefix Modifier "Chosen" — Life, Defences }
+21(18-21)% increased Armour and Evasion (crafted)
++15(14-16) to maximum Life (crafted)
+{ Suffix Modifier "of Snuffing" (Tier: 4) }
++13(11-13)% chance to Suppress Spell Damage
+(50% of Damage from Suppressed Hits and Ailments they inflict is prevented)
+{ Suffix Modifier "of the Magma" (Tier: 2) — Elemental, Fire, Resistance }
++45(42-45)% to Fire Resistance
+{ Suffix Modifier "of the Flatworm" (Tier: 7) — Life }
+Regenerate 9(8.1-16) Life per second
+Searing Exarch Item
+Eater of Worlds Item
+`
+  }
 ];
