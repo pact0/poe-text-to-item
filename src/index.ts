@@ -1,1 +1,1 @@
-export { generateItem } from "@utils/generateItem";
+export * from "./utils/generateItem";
