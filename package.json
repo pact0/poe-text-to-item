@@ -10,7 +10,7 @@
   "description": "Parser for Path of Exile item text.",
   "license": "MIT",
   "scripts": {
-    "dev": "npx ts-node-dev --respawn --prefer-ts true --no-notify -r tsconfig-paths/register --watch src --transpile-only src/index.ts",
+    "dev": "npx ts-node-dev --respawn --prefer-ts true --no-notify -r tsconfig-paths/register --watch src --transpile-only src/test.ts",
     "build": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist"
   },
   "devDependencies": {
