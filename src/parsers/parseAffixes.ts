@@ -65,6 +65,7 @@ interface Affix {
   tier: number;
   isElevated: boolean;
   isNotable: boolean;
+  isQualityEnhanced: boolean;
   affixType: string;
   modName: string;
   type: string;
