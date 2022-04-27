@@ -64,11 +64,12 @@ export function parseBaseItem(baseSection:Section): any {
     //     baseItem = found.name;
     // }
 
-    return {base:base.trim(),name:name.trim(),rarity:rarity.trim()};
+    const baseInfo = getBaseInfo(base)
+    return {base:base.trim(),name:name.trim(),rarity:rarity.trim(), w:baseInfo.w,h:baseInfo.h};
 }
 
-const getBaseInfo = (baseName:keyof typeof rareBases)=>{
-  return rareBases[baseName];
+const getBaseInfo = (baseName:string)=>{
+  return rareBases[baseName as keyof typeof rareBases];
 }
 
 const getMetamorphBaseItem = (baseItem: string): string => {

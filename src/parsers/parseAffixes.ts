@@ -76,7 +76,7 @@ interface Affix {
 }
 
 const parsePlaceholder = (affixPlaceholder: AffixPlaceholder): any=>{
-  const affix:Affix= {header:"", mod:"", influence:"",tier:-1,isElevated:false,isNotable:false,affixType:"", modName:"",type:"", modFormatted:"", modValues:[], craftOfExile:{modgroup:-1},modRange:"", modFormattedNoParentheses:""}
+  const affix:Affix= {header:"", mod:"", influence:"",tier:-1,isElevated:false,isNotable:false,isQualityEnhanced:false,affixType:"", modName:"",type:"", modFormatted:"", modValues:[], craftOfExile:{modgroup:-1},modRange:"", modFormattedNoParentheses:""}
   const affixHeaderString = affixPlaceholder.header
   const affixString = affixPlaceholder.secondMod ? affixPlaceholder.mod +", "+affixPlaceholder.secondMod : affixPlaceholder.mod
 
@@ -157,7 +157,8 @@ if(affix.header.includes("Master Crafted")){
     // Remove digits from text
   affix.modFormatted = affix.mod.replace(Patterns.Digits, "#");
   const modRangeMatch = affix.mod.match(Patterns.AffixModParenthesis);
-    affix.modFormattedNoParentheses = affix.mod.replace(Patterns.AffixModParenthesis, "");
+
+    affix.modFormattedNoParentheses = affix.mod.replaceAll(Patterns.AffixModParenthesis, "");
 
     // Get values
     let matches;
@@ -165,8 +166,10 @@ if(affix.header.includes("Master Crafted")){
         if(matches) affix.modValues.push(parseFloat(matches[0]));
     }
 
+  affix.isQualityEnhanced = Patterns.AffixModQualityEnhanced.test(affix.header)
+
   if(modRangeMatch){
-    affix.modRange = modRangeMatch[0];
+    affix.modRange = modRangeMatch.join(" ");
   }else{
     affix.modRange = affix.modValues.join(",");
   }

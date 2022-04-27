@@ -1,35 +1,44 @@
-Item Class: Boots
+Item Class: Bows
 Rarity: Rare
-Blood League
-Titan Greaves
+Tempest Horn
+Synthesised Ivory Bow
 --------
-Quality: +20% (augmented)
-Armour: 299 (augmented)
+Bow
+Quality: +30% (augmented)
+Physical Damage: 29-86
+Elemental Damage: 8-14 (augmented)
+Critical Strike Chance: 8.71% (augmented)
+Attacks per Second: 1.71 (augmented)
 --------
 Requirements:
-Level: 72
-Str: 120
-Dex: 100
-Int: 111
+Level: 64
+Dex: 152
 --------
-Sockets: B-B-G G
+Sockets: W-W-W-R-G-G
 --------
-Item Level: 85
+Item Level: 82
 --------
-{ Prefix Modifier "Gazelle's" (Tier: 3) — Speed }
-25% increased Movement Speed
-{ Prefix Modifier "Hunter's" (Tier: 1) }
-Projectiles Pierce 2 additional Targets
-{ Prefix Modifier "Stout" (Tier: 5) — Life }
-+46(40-49) to maximum Life
-{ Suffix Modifier "of the Hunt" (Tier: 2) — Damage, Chaos, Ailment }
-Poisons you inflict deal Damage 9(7-9)% faster
-(Poison deals Chaos Damage over time, based on the base Physical and Chaos Damage of the Skill. Multiple instances of Poison stack)
-(They will deal the same total damage over a shorter duration)
-{ Suffix Modifier "of Thick Skin" (Tier: 6) }
-12(11-13)% increased Stun and Block Recovery
-{ Master Crafted Suffix Modifier "of Craft" (Rank: 2) }
-+8(7-8)% chance to Suppress Spell Damage (crafted)
-(50% of Damage from Suppressed Hits and Ailments they inflict is prevented) (crafted)
+Quality does not increase Physical Damage (enchant)
+1% increased Attack Speed per 8% Quality (enchant)
 --------
-Hunter Item
+{ Implicit Modifier — Gem }
++1 to Level of Socketed Gems (implicit)
+{ Implicit Modifier — Damage, Elemental, Fire, Attack }
+Adds 8(4-8) to 14(9-15) Fire Damage (implicit)
+--------
+{ Prefix Modifier "Subterranean" (Tier: 1) — Damage, Caster, Gem }
+Socketed Skills deal 20% more Spell Damage — Unscalable Value
+{ Prefix Modifier "Paragon's" (Tier: 1) — Gem }
++1 to Level of Socketed Gems
+{ Master Crafted Prefix Modifier "Catarina's" — Gem }
++2 to Level of Socketed Support Gems (crafted)
+{ Suffix Modifier "of Acclaim" (Tier: 2) — Attack, Speed }
+19(17-19)% increased Attack Speed
+{ Suffix Modifier "of Destruction" (Tier: 1) — Damage, Critical }
++38(35-38)% to Global Critical Strike Multiplier
+{ Suffix Modifier "of Penetrating" (Tier: 2) — Attack, Critical }
+34(30-34)% increased Critical Strike Chance
+--------
+Synthesised Item
+--------
+Note: ~b/o 1 mirror
