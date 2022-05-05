@@ -21,5 +21,6 @@ export function parseFlags(rawText:string, name:string): Flags {
         fractured: Patterns.Fractured.test(rawText),
         mirrored: Patterns.Mirrored.test(rawText),
         veiled: Patterns.AffixVeiled.test(rawText),
+        scourged: Patterns.AffixScourged.test(rawText),
     };
 }

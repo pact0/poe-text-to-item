@@ -1,9 +1,17 @@
-import { AffixType } from "@models/enums";
-
 export interface Affix {
-    text: string;
-    formatted: string;
-    influence: string;
-    values: number[];
-    type: AffixType;
+  header: string;
+  mod: string;
+  influence: string;
+  tier: number;
+  isElevated: boolean;
+  isNotable: boolean;
+  isQualityEnhanced: boolean;
+  affixType: string;
+  modName: string;
+  type: string;
+  modFormatted: string;
+  modFormattedNoParentheses: string;
+  modValues: number[];
+  craftOfExile: {modgroup:number};
+  modRange: string;
 }

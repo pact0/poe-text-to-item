@@ -5,4 +5,5 @@ export enum AffixType {
     Fractured = "fractured",
     Crafted = "crafted",
     Veiled = "veiled",
+    Scourged = "scourged",
 }

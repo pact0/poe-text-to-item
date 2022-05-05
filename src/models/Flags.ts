@@ -17,4 +17,5 @@ export interface Flags {
     fractured: boolean;
     mirrored: boolean;
     veiled: boolean;
+    scourged: boolean;
 }

@@ -1,3 +1,4 @@
+import { Affix } from "@models/Affix";
 import { AffixType } from "@models/enums";
 import { Section } from "@models/Section";
 import { Patterns } from "@utils/Patterns";
@@ -34,6 +35,14 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
         continue;
       }
 
+      if(checkScourgedSection(line)){
+        // skip helper info
+        if(line.charAt(0) === "(") continue;
+        affixIndex++;
+        affixPlaceholders[affixIndex] ={header: line, mod:line}
+        continue;
+      }
+
       if(checkAffixHeader(line)){
         affixIndex++;
         affixPlaceholders[affixIndex] ={header: line, mod:""}
@@ -53,28 +62,12 @@ export function parseAffixes(affixSections:Section[]): Affix[] | undefined {
 
   }
 
+  console.log(affixPlaceholders)
   return affixPlaceholders.map((affix: AffixPlaceholder)=>{
     return parsePlaceholder(affix)
   })
 }
 
-interface Affix {
-  header: string;
-  mod: string;
-  influence: string;
-  tier: number;
-  isElevated: boolean;
-  isNotable: boolean;
-  isQualityEnhanced: boolean;
-  affixType: string;
-  modName: string;
-  type: string;
-  modFormatted: string;
-  modFormattedNoParentheses: string;
-  modValues: number[];
-  craftOfExile: {modgroup:number};
-  modRange: string;
-}
 
 const parsePlaceholder = (affixPlaceholder: AffixPlaceholder): any=>{
   const affix:Affix= {header:"", mod:"", influence:"",tier:-1,isElevated:false,isNotable:false,isQualityEnhanced:false,affixType:"", modName:"",type:"", modFormatted:"", modValues:[], craftOfExile:{modgroup:-1},modRange:"", modFormattedNoParentheses:""}
@@ -147,12 +140,14 @@ if(affix.header.includes("Master Crafted")){
         .replace(Patterns.AffixImplicit, "")
         .replace(Patterns.AffixCrafted, "")
         .replace(Patterns.AffixFractured, "")
+        .replace(Patterns.AffixScourged, "")
         .replace(" — Unscalable Value", "")
 
     affix.type = Patterns.AffixEnchant.test(affixString) ? AffixType.Enchant : affix.type;
     affix.type = Patterns.AffixImplicit.test(affixString) ? AffixType.Implicit : affix.type;
     affix.type = Patterns.AffixCrafted.test(affixString) ? AffixType.Crafted : affix.type;
     affix.type = Patterns.AffixFractured.test(affixString) ? AffixType.Fractured : affix.type;
+    affix.type = Patterns.AffixScourged.test(affixString) ? AffixType.Scourged : affix.type;
     affix.type = Patterns.AffixVeiled.test(affixString) ? AffixType.Veiled : affix.type;
 
     // Remove digits from text
@@ -184,6 +179,10 @@ const checkAffixHeader = (affixString: string): boolean=>{
   return affixString.charAt(0)=== "{"
 }
 
+const checkScourgedSection = (affixString: string): boolean=>{
+  return Patterns.AffixScourged.test(affixString)
+}
+
 const checkEnchantSection = (affixString: string): boolean=>{
   return Patterns.AffixEnchant.test(affixString)
 }
@@ -195,6 +194,11 @@ const getAffixSectionIndices = (sections:Section[]): number[] => {
     const enchantIdx = findSectionIndex(Patterns.AffixEnchant, sections);
     if (enchantIdx !== undefined) {
         indices.push(enchantIdx);
+    }
+
+    const scourgedIdx = findSectionIndex(Patterns.AffixScourged, sections);
+    if (scourgedIdx !== undefined) {
+        indices.push(scourgedIdx);
     }
 
     // Try to find implicit section

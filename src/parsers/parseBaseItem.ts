@@ -2,12 +2,13 @@ import { Rarity } from "@models/enums";
 import { Section } from "@models/Section";
 import { Patterns } from "@utils/Patterns";
 import rareBases from "@bases/rareBases.json"
+import { Base } from "@models/Base";
 
 
-export function parseBaseItem(baseSection:Section): any {
+export function parseBaseItem(baseSection:Section): Base | undefined {
     const section = baseSection;
     if (section === undefined) {
-        return "Unknown";
+        return  undefined
     }
 
     // if (this.beast !== undefined) {

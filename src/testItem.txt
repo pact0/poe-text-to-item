@@ -1,44 +1,38 @@
-Item Class: Bows
+Item Class: Wands
 Rarity: Rare
-Tempest Horn
-Synthesised Ivory Bow
+Hate Weaver
+Quartz Wand
 --------
-Bow
-Quality: +30% (augmented)
-Physical Damage: 29-86
-Elemental Damage: 8-14 (augmented)
-Critical Strike Chance: 8.71% (augmented)
-Attacks per Second: 1.71 (augmented)
+Wand
+Physical Damage: 14-27
+Critical Strike Chance: 7.00%
+Attacks per Second: 1.30
 --------
 Requirements:
-Level: 64
-Dex: 152
+Level: 24
+Int: 65
 --------
-Sockets: W-W-W-R-G-G
+Sockets: B-R-B
 --------
-Item Level: 82
+Item Level: 25
 --------
-Quality does not increase Physical Damage (enchant)
-1% increased Attack Speed per 8% Quality (enchant)
+52% reduced Lightning Damage (scourge)
+Adds 11 to 27 Physical Damage to Spells (scourge)
 --------
-{ Implicit Modifier — Gem }
-+1 to Level of Socketed Gems (implicit)
-{ Implicit Modifier — Damage, Elemental, Fire, Attack }
-Adds 8(4-8) to 14(9-15) Fire Damage (implicit)
+{ Implicit Modifier — Damage, Caster }
+20(18-22)% increased Spell Damage (implicit)
 --------
-{ Prefix Modifier "Subterranean" (Tier: 1) — Damage, Caster, Gem }
-Socketed Skills deal 20% more Spell Damage — Unscalable Value
-{ Prefix Modifier "Paragon's" (Tier: 1) — Gem }
-+1 to Level of Socketed Gems
-{ Master Crafted Prefix Modifier "Catarina's" — Gem }
-+2 to Level of Socketed Support Gems (crafted)
-{ Suffix Modifier "of Acclaim" (Tier: 2) — Attack, Speed }
-19(17-19)% increased Attack Speed
-{ Suffix Modifier "of Destruction" (Tier: 1) — Damage, Critical }
-+38(35-38)% to Global Critical Strike Multiplier
-{ Suffix Modifier "of Penetrating" (Tier: 2) — Attack, Critical }
-34(30-34)% increased Critical Strike Chance
+{ Prefix Modifier "Humming" (Tier: 9) — Damage, Elemental, Lightning, Caster }
+Adds 1 to 4(4-5) Lightning Damage to Spells
+{ Prefix Modifier "Alpine" (Tier: 6) — Damage, Elemental, Cold }
+34(30-39)% increased Cold Damage
+{ Suffix Modifier "of Spilling" (Tier: 4) — Damage, Physical }
++21(19-23)% to Physical Damage over Time Multiplier
+{ Suffix Modifier "of the Squall" (Tier: 7) — Elemental, Lightning, Resistance }
++13(12-17)% to Lightning Resistance
+{ Master Crafted Suffix Modifier "of Craft" (Rank: 1) — Caster, Speed }
+11(10-13)% increased Cast Speed (crafted)
 --------
-Synthesised Item
+Corrupted
 --------
-Note: ~b/o 1 mirror
+Scourged
