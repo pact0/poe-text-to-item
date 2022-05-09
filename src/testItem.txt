@@ -1,38 +1,25 @@
-Item Class: Wands
-Rarity: Rare
-Hate Weaver
-Quartz Wand
+Item Class: Jewels
+Rarity: Unique
+Watcher's Eye
+Prismatic Jewel
 --------
-Wand
-Physical Damage: 14-27
-Critical Strike Chance: 7.00%
-Attacks per Second: 1.30
+Limited to: 1
 --------
-Requirements:
-Level: 24
-Int: 65
+Item Level: 85
 --------
-Sockets: B-R-B
+{ Unique Modifier — Life }
+6(4-6)% increased maximum Life
+{ Unique Modifier — Defences }
+4(4-6)% increased maximum Energy Shield
+{ Unique Modifier — Mana }
+4(4-6)% increased maximum Mana
+{ Unique Modifier — Caster, Speed }
+12(10-15)% increased Cast Speed while affected by Zealotry
+{ Unique Modifier — Physical, Elemental, Fire }
+12(8-12)% of Physical Damage from Hits taken as Fire Damage while affected by Purity of Elements
 --------
-Item Level: 25
+One by one, they stood their ground against a creature
+they had no hope of understanding, let alone defeating,
+and one by one, they became a part of it.
 --------
-52% reduced Lightning Damage (scourge)
-Adds 11 to 27 Physical Damage to Spells (scourge)
---------
-{ Implicit Modifier — Damage, Caster }
-20(18-22)% increased Spell Damage (implicit)
---------
-{ Prefix Modifier "Humming" (Tier: 9) — Damage, Elemental, Lightning, Caster }
-Adds 1 to 4(4-5) Lightning Damage to Spells
-{ Prefix Modifier "Alpine" (Tier: 6) — Damage, Elemental, Cold }
-34(30-39)% increased Cold Damage
-{ Suffix Modifier "of Spilling" (Tier: 4) — Damage, Physical }
-+21(19-23)% to Physical Damage over Time Multiplier
-{ Suffix Modifier "of the Squall" (Tier: 7) — Elemental, Lightning, Resistance }
-+13(12-17)% to Lightning Resistance
-{ Master Crafted Suffix Modifier "of Craft" (Rank: 1) — Caster, Speed }
-11(10-13)% increased Cast Speed (crafted)
---------
-Corrupted
---------
-Scourged
+Place into an allocated Jewel Socket on the Passive Skill Tree. Right click to remove from the Socket.

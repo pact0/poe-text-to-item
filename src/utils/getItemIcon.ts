@@ -6,9 +6,12 @@ export function getItemIcon(itemBase:any){
 
     if(itemBase.base.includes("Map")) return ""
 
-    return "http://web.poecdn.com/image/Art/2DItems/" + rareBases[itemBase.base as keyof typeof rareBases].imgurl
+    const base = rareBases[itemBase.base as keyof typeof rareBases]
+    if(!base) return ""
+    return base.icon
   } else{
     const base =uniqueBases[itemBase.name as keyof typeof uniqueBases] as any
-    return "http://web.poecdn.com/image/Art/2DItems/" + base.icon + ".png"
+    if(!base) return ""
+    return base.icon
   }
 }
