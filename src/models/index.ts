@@ -13,3 +13,5 @@ export * from "./Requirements";
 export * from "./Sockets";
 export * from "./StackSize";
 export * from "./Talisman";
+export * from "./Item";
+export * from "./Base";
